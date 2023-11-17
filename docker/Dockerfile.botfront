@@ -3,6 +3,7 @@ FROM python:3.9.14-slim as base
 RUN sed -i "s@http://deb.debian.org@http://mirrors.aliyun.com@g" /etc/apt/sources.list \
  && rm -Rf /var/lib/apt/lists/* \
  && apt-get update
+ENV HTTP_MAX_POOL_SIZE 20
 
 RUN apt-get update -qq \
  && apt-get install -y --no-install-recommends \
